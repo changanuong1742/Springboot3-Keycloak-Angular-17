@@ -1,0 +1,12 @@
+mat-drawer-container{
+  mat-drawer{
+    width: 300px;
+    background: #F8F6F2;
+  }
+  .mat-drawer-content{
+    height: 100vh;
+  }
+  .logout-btn{
+    cursor: pointer;
+  }
+}

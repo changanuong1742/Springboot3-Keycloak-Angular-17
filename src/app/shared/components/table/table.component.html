@@ -1,0 +1,26 @@
+<table mat-table [dataSource]="dataTable" class="mat-elevation-z8">
+  <!-- Define columns for each property -->
+  <ng-container *ngFor="let column of displayedColumns" [matColumnDef]="column">
+    <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
+    <td mat-cell *matCellDef="let emp">{{ emp[column] }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="delete">
+    <th mat-header-cell *matHeaderCellDef>Action</th>
+    <td mat-cell *matCellDef="let emp">
+      @if (action['edit']) {
+        <button mat-icon-button [routerLink]="['/seat/form']" [queryParams]="{ id: emp.id }"><img
+          src="./assets/images/icon/edit-3-svgrepo-com.svg"/></button>
+      }
+      <button mat-icon-button (click)="removeRecordEmit(emp)"><img
+        src="./assets/images/icon/trash-bin-trash-svgrepo-com.svg"/></button>
+    </td>
+  </ng-container>
+  <!-- Sử dụng cột mới trong header row -->
+  <tr mat-header-row *matHeaderRowDef="displayedColumns.concat('delete')"></tr>
+  <!-- Sử dụng cột mới trong data rows -->
+  <tr
+    mat-row
+    *matRowDef="let emprow; columns: displayedColumns.concat('delete')"
+  ></tr>
+</table>

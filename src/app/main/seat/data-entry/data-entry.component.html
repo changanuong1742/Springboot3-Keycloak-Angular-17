@@ -1,0 +1,16 @@
+<form [formGroup]="formData" class="form-data">
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="Enter name..." formControlName="name">
+    <mat-error *ngIf="formData.get('name')?.hasError('required')">
+      Name is required
+    </mat-error>
+    <mat-error *ngIf="formData.get('name')?.hasError('minlength')">
+      Name must be at least 2 characters long
+    </mat-error>
+  </mat-form-field>
+
+  <div class="example-button-row">
+    <button mat-raised-button color="accent" (click)="submitForm()">Submit</button>
+  </div>
+</form>
