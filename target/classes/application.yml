@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: keycloak
+  datasource:
+    url: jdbc:mysql://localhost:3306/pos
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: changanuong1742
+    password: chanvkl205
+  jpa:
+    hibernate:
+      ddl-auto: update
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/oauth2-demo-realm
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+jwt:
+  auth:
+    converter:
+      resource-id: angular-auth
+      principle-attribute: preferred_username
+
+server:
+  port: '8081'
+
